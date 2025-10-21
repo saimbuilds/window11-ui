@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const App = () => {
+    const [secreen, setsecreen] = useState("loading")
   return (
-    <div>App</div>
+    <div className='font-sans'>
+      <Landing/>
+
+    </div>
+
   )
 }
-888
+
 export default App
