@@ -13,6 +13,9 @@ module.exports = {
       fontFamily: {
         'sans': ["Segoe UI 4", ...defaultTheme.fontFamily.sans],
       },
+      colors:{
+        'signin-white': '#E8E8E8'
+      }
     },
   },
   plugins: [],
