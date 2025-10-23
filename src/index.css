@@ -1,3 +1,6 @@
+/* 1. External Imports (Must come first) */
 @import url('https://fonts.cdnfonts.com/css/segoe-ui-4');
-@import "tailwindcss";
+
+/* 2. Tailwind Import (Vite/Modern Setup) */
+@import 'tailwindcss';
 
