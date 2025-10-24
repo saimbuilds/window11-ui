@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
-import Landing from './Components/Welcome/landing'
+
 import Signin from './Components/Welcome/Signin'
 import MainUI from './Components/main/MainUI'
+import Landing from './Components/Welcome/Landing';
+
 const App = () => {
     const [screen, setscreen] = useState("locked");
     const loadSignInHandler = ()=>{
