@@ -3,4 +3,62 @@
 
 /* 2. Tailwind Import (Vite/Modern Setup) */
 @import 'tailwindcss';
+:root {
+  --win11-blue: #4cc2ff;
+  --win11-gray-track: #4a4a4a;
+  --win11-thumb-ring: #606060;
+  --thumb-size: 16px;
+  --thumb-border-size: 2px;
+}
 
+.win11-slider {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 300px;
+  height: 8px;
+  background: transparent;
+  cursor: pointer;
+  margin: 20px 0;
+}
+
+.win11-slider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--win11-gray-track);
+}
+
+.win11-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: var(--thumb-size);
+  width: var(--thumb-size);
+  margin-top: calc(-4px); /* centers on 8px track */
+  background: var(--win11-blue);
+  border: var(--thumb-border-size) solid var(--win11-thumb-ring);
+  border-radius: 50%;
+  box-shadow: 0 0 2px rgba(0,0,0,0.5), 0 0 0 4px var(--win11-blue) inset;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.win11-slider:hover::-webkit-slider-thumb {
+  background: #66d1ff;
+  border-color: #888888;
+}
+
+/* Firefox */
+.win11-slider::-moz-range-track {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--win11-gray-track);
+}
+
+.win11-slider::-moz-range-thumb {
+  height: var(--thumb-size);
+  width: var(--thumb-size);
+  background: var(--win11-blue);
+  border-radius: 50%;
+  border: var(--thumb-border-size) solid var(--win11-thumb-ring);
+  box-shadow: 0 0 2px rgba(0,0,0,0.5), 0 0 0 4px var(--win11-blue) inset;
+  transition: background 0.15s, border-color 0.15s;
+}

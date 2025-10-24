@@ -11,6 +11,7 @@ import bluetooth from "../../../../assets/Logos/bluetooth.png";
 import airplane from "../../../../assets/Logos/airplane.png";
 import darkMode from "../../../../assets/Logos/nightlight.png";
 import moon from "../../../../assets/Logos/moon.png";
+import brightness from "../../../../assets/Logos/brightness.png";
 import saver from "../../../../assets/Logos/saver.png";
 import audio3 from "../../../../assets/Logos/audio3.png";
 import dropdown from "../../../../assets/Logos/dropdownup.svg";
@@ -45,37 +46,38 @@ const Taskbar = () => {
     setisHide((prev) => !prev);
   };
 
-  const toggleTaskbarPanel = () =>{
-    setisPanelOpen((prev) => !prev)
-  }
+  const toggleTaskbarPanel = () => {
+    setisPanelOpen((prev) => !prev);
+  };
 
   const iconClass = `w-9 h-9 object-cover cursor-pointer p-[2px] hover:scale-110 transition duration-150 hover:bg-white/20 hover:rounded-lg
     `;
-  const taskBarClass = `hover: transition duration-150 hover:bg-white/20 rounded-lg p-2  h-[5vh]`;
+  const taskBarClass = `rounded-lg p-2  h-[5vh]`;
 
   const [panelItemActive, setpanelItemActive] = useState({
-    wifi: false,      
-    bluetooth: false, 
-    airplane: false,  
-    saver: false,     
-    moon: false,      
-    darkMode: false,  
-  })
-const taskBarPanelSettings = [
-  { id: 'wifi', image: wifi, name: 'WiFi' },
-  { id: 'bluetooth', image: bluetooth, name: 'Bluetooth' },
-  { id: 'airplane', image: airplane, name: 'Flight Mode' },
-  { id: 'saver', image: saver, name: 'Battery Saver' },
-  { id: 'moon', image: moon, name: 'Theme' },
-  { id: 'darkMode', image: darkMode, name: 'Night Light' },
-];
+    wifi: false,
+    bluetooth: false,
+    airplane: false,
+    saver: false,
+    moon: false,
+    darkMode: false,
+  });
+  const taskBarPanelSettings = [
+    { id: "wifi", image: wifi, name: "WiFi" },
+    { id: "bluetooth", image: bluetooth, name: "Bluetooth" },
+    { id: "airplane", image: airplane, name: "Flight Mode" },
+    { id: "saver", image: saver, name: "Battery Saver" },
+    { id: "moon", image: moon, name: "Theme" },
+    { id: "darkMode", image: darkMode, name: "Night Light" },
+  ];
 
-  const activatePanelItem = (id) =>{
-    setpanelItemActive(prev=> ({
-      ...prev, [id]: !prev[id]
-    }))
-  }
-
+  const activatePanelItem = (id) => {
+    setpanelItemActive((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+   
+  };
 
   return (
     <div className="w-screen h-[6vh] bg-linear-to-r from-black/70 via-black/0 to-black/70 backdrop-blur-sm  top-[90%] flex items-center px-5 justify-between">
@@ -108,40 +110,74 @@ const taskBarPanelSettings = [
                   : "max-h-0 opacity-0 overflow-hidden"
               }`}
             >
-              <div className="hover:bg-white/20 p-1 rounded-md h-fit cursor-pointer" >
-              <img src={spotify} className="w-6.5 h-6.5" alt="" />
+              <div className="hover:bg-white/20 p-1 rounded-md h-fit cursor-pointer">
+                <img src={spotify} className="w-6.5 h-6.5" alt="" />
               </div>
-              <div  className="hover:bg-white/20 p-1 rounded-md h-fit cursor-pointer">
-
-              <img src={terminal} className="w-6.5 h-6.5" alt="" />
+              <div className="hover:bg-white/20 p-1 rounded-md h-fit cursor-pointer">
+                <img src={terminal} className="w-6.5 h-6.5" alt="" />
               </div>
-              <div className="hover:bg-white/20 p-1 rounded-md h-fit cursor-pointer"> 
-              <img src={notepad} className="w-6.5 h-6.5" alt="" />
+              <div className="hover:bg-white/20 p-1 rounded-md h-fit cursor-pointer">
+                <img src={notepad} className="w-6.5 h-6.5" alt="" />
               </div>
             </div>
           }
         </div>
-        <div className={`flex items-center gap-3 realtive ${taskBarClass}` }  onClick={toggleTaskbarPanel}>
-          <img className="w-5 h-5 object-fit invert" src={wifi} alt="" />
-          <img className="w-5 h-5 object-fit invert" src={audio3} alt="" />
-          
-           <div className={`w-[20vw] h-[28vh] bg-[#242424] rounded-xl p-4 absolute bottom-[125%] right-[2%]  transition-all duration-300 ease-in-out ${isPanelOpen?"opacity-100": "opacity-0 overflow-hidden"}`}>
-            <div className="flex justify-between  gap-2 shrink-0 flex-wrap ">
-              {taskBarPanelSettings.map((item)=>{
-                return <div key={item.id} className="  w-[31%] flex flex-col items-center ">
-                  <div onClick={()=>activatePanelItem(item.id)} className={`bg-[#313131] cursor-pointer px-8 py-4 w-full rounded-lg ${panelItemActive?"bg-amber-200": "bg-amber-950"}`}>
-                  <img src={item.image} className="w-4 h-4 relative left-1/2 -translate-x-1/2 invert" alt="" />
-                  </div>
-                  <button className="text-sm">{item.name}</button>
+        <div className={`flex items-center gap-3 realtive  ${taskBarClass}`}>
+          <div onClick={toggleTaskbarPanel} className="flex gap-2">
+            <div className=" w-full h-full p-2 rounded-lg flex items-center gap-2  hover: transition duration-150 hover:bg-white/20 ">
+            <img className="w-5 h-5 object-fit invert" src={wifi} alt="" />
+            <img className="w-5 h-5 object-fit invert" src={audio3} alt="" />
+            </div>
+            {isPanelOpen && (
+              <div
+                onClick={(e) => e.stopPropagation()}
+                className={`w-[20vw] h-[28vh] bg-[#242424] rounded-xl p-4 absolute bottom-[125%] right-[2%]  transition-all duration-300 ease-in-out ${
+                  isPanelOpen ? "opacity-100" : "opacity-0 overflow-hidden"
+                }`}
+              >
+                <div className="flex justify-between  gap-2 shrink-0 flex-wrap ">
+                  {taskBarPanelSettings.map((item) => {
+                    const isActive = panelItemActive[item.id]
+                    return (
+                      <div
+                        key={item.id}
+                        className="  w-[31%] flex flex-col items-center "
+                      >
+                        <div
+                          onClick={() => activatePanelItem(item.id)}
+                          className={`cursor-pointer px-8 py-4 w-full rounded-lg ${
+                            isActive ? "bg-[#4CC2FF]" : "bg-[#313131]"
+                          }`}
+                        >
+                          <img
+                            src={item.image}
+                            className={`w-4 h-4 relative left-1/2 -translate-x-1/2  ${
+                              isActive ? "" : "invert-180"
+                            }`}
+                            alt=""
+                          />
+                        </div>
+                        <button className="text-sm">{item.name}</button>
+                      </div>
+                    );
+                  })}
                 </div>
-              })}
-            </div>
-             <div>Volume and brightness</div>  
-             <div>Settings</div>
-            </div>
-          
+                {/* volume and brightness radio button */}
+                <div className="mt-5 flex flex-col  px-4">
+                  <div className="flex items-center gap-4">
+                    <img src={brightness} className="w-6 h-6 invert" alt="" />
+                    <input className="win11-slider" type="range" min="0" max="100" defaultValue={100} />
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <img src={audio3} className="w-6 h-6 invert" alt="" />
+                    <input type="range" className="win11-slider" />
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
-        <div className={`flex flex-col text-sm ${taskBarClass}`} >
+        <div className={`flex flex-col text-sm hover: transition duration-150 hover:bg-white/20  ${taskBarClass}`}>
           <h3 className="text-right">{time}</h3>
           <h3>{fullDate}</h3>
         </div>

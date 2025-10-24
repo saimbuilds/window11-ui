@@ -1,11 +1,14 @@
-import React from 'react'
-import Taskbar from './Desktop/Taskbar/Taskbar'
-import Desktop from './Desktop/Desktop'
+import React from "react";
+import Taskbar from "./Desktop/Taskbar/Taskbar";
+import Desktop from "./Desktop/Desktop";
+// import { BrightnessProvider } from "../../Context/BrightnessContext";
 
 const MainUI = () => {
   return (
-  <Desktop/>
-  )
-}
+    // <BrightnessProvider>
+      <Desktop />
+    // </BrightnessProvider>
+  );
+};
 
-export default MainUI
+export default MainUI;
